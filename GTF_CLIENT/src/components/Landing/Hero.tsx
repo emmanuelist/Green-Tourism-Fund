@@ -71,7 +71,7 @@ const Hero = () =>
     // };
 
     return (
-        <div className="relative w-full h-screen min-h-[600px] mt-3 overflow-hidden bg-gray-900">
+        <div className="relative w-full h-screen min-h-[600px] overflow-hidden bg-gray-900">
             {/* Background Carousel with darker overlay for better contrast */}
             <div className="absolute inset-0 w-full h-full">
                 {slides.map((slide, index) => (
@@ -103,7 +103,7 @@ const Hero = () =>
                     animate="animate"
                     variants={fadeIn}
                 >
-                    <div className="text-center max-w-4xl mx-auto space-y-8">
+                    <div className="text-center max-w-5xl mx-auto space-y-10">
                         {/* Subtitle with enhanced visibility */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -117,7 +117,7 @@ const Hero = () =>
 
                         {/* Main heading with improved spacing */}
                         <motion.div className="space-y-2" variants={fadeIn}>
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
                                 Investing in Nature
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 mt-2">
                                     for a Sustainable Future
@@ -127,7 +127,7 @@ const Hero = () =>
 
                         {/* Description with better readability */}
                         <motion.p
-                            className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed"
+                            className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed"
                             variants={fadeIn}
                         >
                             Connect with wildlife tourism businesses and support sustainable practices through our decentralized funding platform.

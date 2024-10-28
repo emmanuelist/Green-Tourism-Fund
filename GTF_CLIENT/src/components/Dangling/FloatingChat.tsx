@@ -146,10 +146,10 @@ const FloatingChat: React.FC<FloatingChatProps> = ({
                         </div>
                         <button
                             onClick={() => setIsMinimized(!isMinimized)}
-                            className="p-1 hover:bg-white/20 rounded-full transition-colors"
+                            className="p-1 hover:bg-white/20 rounded-full border border-purple-600 transition-colors"
                             aria-label={isMinimized ? 'Expand chat' : 'Minimize chat'}
                         >
-                            <Minimize2 className="w-5 h-5" />
+                            <Minimize2 className="w-5 h-5 text-green-600 hover:text-white" />
                         </button>
                     </div>
 
