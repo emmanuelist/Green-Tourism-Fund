@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import hero_1 from '../../assets/hero/hero_1.jpg';
-import hero_3 from '../../assets/hero/hero_3.jpg';
+import hero_3 from '../../assets/hero/hero_3.avif';
 import hero_4 from '../../assets/hero/hero_4.jpg';
 import hero_5 from '../../assets/hero/hero_5.jpeg';
 import hero_6 from '../../assets/hero/hero_6.jpeg';
@@ -71,7 +71,7 @@ const Hero = () =>
     // };
 
     return (
-        <div className="relative w-full h-screen min-h-[600px] mt-3 overflow-hidden bg-gray-900">
+        <div className="relative w-full h-screen min-h-[600px] mt-3 overflow-hidden bg-gray-900 px-10">
             {/* Background Carousel with darker overlay for better contrast */}
             <div className="absolute inset-0 w-full h-full">
                 {slides.map((slide, index) => (
