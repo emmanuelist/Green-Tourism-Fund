@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import hero9 from '../../assets/hero/hero9.jpg';
-import hero13 from '../../assets/hero/hero13.jpeg';
-import hero12 from '../../assets/hero/hero12.jpeg';
+import hero_1 from '../../assets/hero/hero_1.avif';
+import hero_3 from '../../assets/hero/hero_3.avif';
+import hero_4 from '../../assets/hero/hero_4.avif';
 import hero10 from '../../assets/hero/hero10.jpg';
 import hero11 from '../../assets/hero/hero11.jpg';
 
@@ -13,17 +13,17 @@ const Hero = () =>
 
     const slides = [
         {
-            image: hero9,
+            image: hero_1,
             subtitle: "Wildlife Conservation",
             description: "Supporting endangered species protection"
         },
         {
-            image: hero13,
+            image: hero_3,
             subtitle: "Sustainable Tourism",
             description: "Promoting eco-friendly travel experiences"
         },
         {
-            image: hero12,
+            image: hero_4,
             subtitle: "Community Impact",
             description: "Empowering local communities"
         },
