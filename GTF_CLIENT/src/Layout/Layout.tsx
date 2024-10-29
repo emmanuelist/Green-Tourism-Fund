@@ -10,7 +10,7 @@ const Layout = () =>
   return (
     <>
       <Navbar />
-      <main>
+      <main className="pt-16 sm:pt-20">
         <Routers />
       </main>
       <Footer />

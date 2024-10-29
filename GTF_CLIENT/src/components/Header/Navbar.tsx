@@ -1,12 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-type Props = {};
-
-const Navbar = ({ }: Props) =>
+const Navbar = () =>
 {
     const [isOpen, setIsOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+
+    // Handle mounting animation
+    useEffect(() =>
+    {
+        setIsMounted(true);
+    }, []);
+
+    // Close menu when resizing to desktop view
+    useEffect(() =>
+    {
+        const handleResize = () =>
+        {
+            if (window.innerWidth >= 768)
+            {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -20,12 +40,12 @@ const Navbar = ({ }: Props) =>
     return (
         <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-lg z-50 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-20">
-                    <div className="flex items-center space-x-12">
-                        {/* Modernized Logo */}
+                <div className="flex justify-between items-center h-16 md:h-20">
+                    <div className="flex items-center space-x-6 md:space-x-12">
+                        {/* Logo */}
                         <Link to="/">
                             <div className="flex items-center cursor-pointer">
-                                <span className="font-black text-3xl tracking-tight">
+                                <span className="font-black text-2xl md:text-3xl tracking-tight">
                                     <span className="bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent">G</span>
                                     <span className="relative !text-black">T</span>
                                     <span className="relative !text-black">F</span>
@@ -34,12 +54,11 @@ const Navbar = ({ }: Props) =>
                             </div>
                         </Link>
 
-                        {/* Simplified Desktop Menu Items */}
+                        {/* Desktop Menu Items */}
                         <div className="hidden md:flex space-x-10">
                             {menuItems.map((item) => (
-                                <Link to={item.href}>
+                                <Link key={item.label} to={item.href}>
                                     <button
-                                        key={item.label}
                                         className="relative text-gray-600 hover:text-green-600 font-medium transition-colors duration-200 outline-none focus:outline-none group"
                                     >
                                         <span className="relative py-2">
@@ -52,17 +71,18 @@ const Navbar = ({ }: Props) =>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-6">
-                        {/* Modern Connect Wallet Button */}
+                    <div className="flex items-center gap-4 md:gap-6">
+                        {/* Connect Wallet Button */}
                         <button className="hidden md:flex items-center bg-green-500 hover:bg-green-600 text-white px-6 py-2.5 rounded-lg transition-all duration-200 font-medium text-sm shadow-sm hover:shadow-md">
                             Connect Wallet
                         </button>
 
-                        {/* Refined Mobile Menu Button */}
+                        {/* Mobile Menu Button */}
                         <button
                             onClick={toggleMenu}
                             className="md:hidden p-2 rounded-lg hover:bg-gray-50 transition-colors focus:outline-none"
                             aria-label="Toggle menu"
+                            aria-expanded={isOpen}
                         >
                             {isOpen ? (
                                 <X className="h-6 w-6 text-gray-600" />
@@ -73,19 +93,29 @@ const Navbar = ({ }: Props) =>
                     </div>
                 </div>
 
-                {/* Refined Mobile Menu */}
+                {/* Mobile Menu */}
                 <div
-                    className={`md:hidden transition-all duration-200 ease-in-out ${isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-                        } overflow-hidden`}
+                    className={`md:hidden fixed left-0 right-0 bg-white/95 backdrop-blur-lg transition-all duration-300 ease-in-out ${isMounted ? 'transform' : 'transform translate-y-[-10px] opacity-0'
+                        } ${isOpen
+                            ? 'opacity-100 translate-y-0 visible'
+                            : 'opacity-0 translate-y-[-10px] invisible'
+                        }`}
+                    style={{
+                        top: '64px', // Matches the mobile header height
+                        maxHeight: isOpen ? '100vh' : '0',
+                        boxShadow: isOpen ? '0 4px 6px -1px rgb(0 0 0 / 0.1)' : 'none'
+                    }}
                 >
-                    <div className="px-2 pt-2 pb-3 space-y-1">
+                    <div className="px-4 py-3 space-y-1">
                         {menuItems.map((item) => (
-                            <button
-                                key={item.label}
-                                className="block w-full text-left px-4 py-3 rounded-lg text-base font-medium text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors duration-200"
-                            >
-                                {item.label}
-                            </button>
+                            <Link key={item.label} to={item.href}>
+                                <button
+                                    className="block w-full text-left px-4 py-3 rounded-lg text-base font-medium text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors duration-200"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {item.label}
+                                </button>
+                            </Link>
                         ))}
                         <button className="w-full mt-4 mb-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium text-sm shadow-sm">
                             Connect Wallet
