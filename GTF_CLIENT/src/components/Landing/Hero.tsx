@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import hero_1 from '../../assets/hero/hero_1.jpg';
-import hero_3 from '../../assets/hero/hero_3.jpg';
-import hero_4 from '../../assets/hero/hero_4.jpg';
-import hero_5 from '../../assets/hero/hero_5.jpeg';
-import hero_6 from '../../assets/hero/hero_6.jpeg';
+import hero9 from '../../assets/hero/hero9.jpg';
+import hero13 from '../../assets/hero/hero13.jpeg';
+import hero12 from '../../assets/hero/hero12.jpeg';
+import hero10 from '../../assets/hero/hero10.jpg';
+import hero11 from '../../assets/hero/hero11.jpg';
 
 const Hero = () =>
 {
@@ -13,27 +13,27 @@ const Hero = () =>
 
     const slides = [
         {
-            image: hero_1,
+            image: hero9,
             subtitle: "Wildlife Conservation",
             description: "Supporting endangered species protection"
         },
         {
-            image: hero_3,
+            image: hero13,
             subtitle: "Sustainable Tourism",
             description: "Promoting eco-friendly travel experiences"
         },
         {
-            image: hero_4,
+            image: hero12,
             subtitle: "Community Impact",
             description: "Empowering local communities"
         },
         {
-            image: hero_5,
+            image: hero10,
             subtitle: "Wildlife Conservation",
             description: "Supporting endangered species protection"
         },
         {
-            image: hero_6,
+            image: hero11,
             subtitle: "Sustainable Tourism",
             description: "Promoting eco-friendly travel experiences"
         }
@@ -71,7 +71,7 @@ const Hero = () =>
     // };
 
     return (
-        <div className="relative w-full h-screen min-h-[600px] overflow-hidden bg-gray-900">
+        <div className="relative w-full h-screen min-h-[600px] mt-3 overflow-hidden bg-gray-900">
             {/* Background Carousel with darker overlay for better contrast */}
             <div className="absolute inset-0 w-full h-full">
                 {slides.map((slide, index) => (
